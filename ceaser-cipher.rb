@@ -2,6 +2,12 @@ require 'pry-byebug'
 
 # Ceaser cipher that fully works also negative indices and decoding/encoding
 def ceaser_cipher(string, shift)
+  if shift < 0
+    shift = shift.abs % 26 * (-1)
+  else
+    shift = shift % 26
+  end 
+
   input_ordinals = string.codepoints
 
   result = input_ordinals.map do |ordinal|
